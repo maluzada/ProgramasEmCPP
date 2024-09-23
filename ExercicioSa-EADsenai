@@ -1,0 +1,40 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    double salario, ImpostoDeRenda = 0, INSS, FGTS, totalDescontos, salarioLiquido;
+    int horasTrabalhadas;
+    cout << "Digite o valor de 1 hora de trabalho: ";
+    cin >> salario;
+    cout << "Digite o número de horas trabalhadas no mês: ";
+    cin >> horasTrabalhadas;
+    double SalarioBruto = salario * horasTrabalhadas;
+
+    INSS = (SalarioBruto * 10) / 100;
+    FGTS = (SalarioBruto * 11) / 100;
+
+    if (SalarioBruto <= 900) {
+        ImpostoDeRenda = 0;
+    } 
+    else if (SalarioBruto <= 1500) {
+        ImpostoDeRenda = (SalarioBruto * 5) / 100;
+    } 
+    else if (SalarioBruto <= 2500) {
+        ImpostoDeRenda = (SalarioBruto * 10) / 100;
+    } 
+    else {
+        ImpostoDeRenda = (SalarioBruto * 22) / 100;
+    }
+
+    totalDescontos = INSS + ImpostoDeRenda;
+    salarioLiquido = SalarioBruto - totalDescontos;
+    
+    cout << "Salário Bruto: (" << horasTrabalhadas << " * " << salario << ") : R$" << SalarioBruto << endl;
+    cout << "(-) IR: R$" << ImpostoDeRenda << endl;
+    cout << "(-) INSS (10%): R$" << INSS << endl;
+    cout << "FGTS (11%): R$" << FGTS << endl;
+    cout << "Total de descontos: R$" << totalDescontos << endl;
+    cout << "Salário Líquido: R$" << salarioLiquido << endl;
+
+    return 0;
+}
